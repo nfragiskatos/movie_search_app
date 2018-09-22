@@ -9,8 +9,9 @@ app.get("/", function(req, res) {
 
 app.get("/results", function(req, res) {
     var term = req.query.search;
+    var type = req.query.type;
     var apiKey = "&apikey=thewdb";
-    var url = "http://www.omdbapi.com/?s=" + term + apiKey;
+    var url = "http://www.omdbapi.com/?s=" + term + "&type=" + type + apiKey;
     request(url, function(error, response, body) {
         if (!error && response.statusCode == 200) {
             var movies = JSON.parse(body);
